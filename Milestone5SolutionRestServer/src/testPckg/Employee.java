@@ -1,4 +1,4 @@
-package commons;
+package testPckg;
 
 public class Employee {
 	private String name;

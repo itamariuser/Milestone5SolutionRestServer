@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.client.ClientConfig;
 
-import commons.Todo;
+import testPckg.Todo;
 
 import java.net.URI;
 

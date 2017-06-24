@@ -5,8 +5,6 @@ import java.util.LinkedList;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import controller.commands.Command;
-
 @XmlRootElement
 public class ServerPlan {
 	private LinkedList<ServerCommand> commands;
