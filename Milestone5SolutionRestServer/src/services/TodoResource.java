@@ -22,7 +22,6 @@ public class TodoResource {
     	Employee s=new Employee();
     	s.setName("EYY ITS A ME");
     	newE.add(s);
-//    	t.setEmployees(newE);
     	return t;
     }
 
