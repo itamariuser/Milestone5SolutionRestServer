@@ -1,7 +1,5 @@
 package client;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.net.URI;
 import java.util.LinkedList;
 
@@ -16,10 +14,8 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
 
-import commons.Level2D;
 import commons.ServerPlan;
 import database.SolutionDBManager;
-import model.data.TextLevel2DLoader;
 
 public class MainClient {
     public static void main(String[] args) {
