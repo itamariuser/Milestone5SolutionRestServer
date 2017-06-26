@@ -14,6 +14,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
 
+import commons.ServerCommand;
 import commons.ServerPlan;
 import database.SolutionDBManager;
 
@@ -42,26 +43,56 @@ public class MainClient {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-    	SolutionDBManager dbm=SolutionDBManager.getInstance();
-		
-		ServerPlan p=new ServerPlan(new LinkedList<>());
-		p.setLevelName("SS");
-		
-		
-		Client zc;
-		ClientConfig config = new ClientConfig();
-		zc = ClientBuilder.newClient(config);
-		WebTarget target = zc.target(getBaseURI()).path("planDB").path("putNewPlan");
-
-		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_XML);
-		Response response = invocationBuilder.put(Entity.entity(p, MediaType.APPLICATION_XML));
-		if (response.getStatus() == 200) {
-			System.out.println(true);
-		} else
-			System.out.println(false);
-
-		
-        
+//    	SolutionDBManager dbm=SolutionDBManager.getInstance();
+//		
+//		ServerPlan p=new ServerPlan(new LinkedList<>());
+//		p.setLevelName("SS");
+//		
+//		
+//		Client zc;
+//		ClientConfig config = new ClientConfig();
+//		zc = ClientBuilder.newClient(config);
+//		WebTarget target = zc.target(getBaseURI()).path("planDB").path("putNewPlan");
+//
+//		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_XML);
+//		Response response = invocationBuilder.put(Entity.entity(p, MediaType.APPLICATION_XML));
+//		if (response.getStatus() == 200) {
+//			System.out.println(true);
+//		} else
+//			System.out.println(false);
+    	//Test for SolutionDBManager
+//		SolutionDBManager dbManager=SolutionDBManager.getInstance();
+//		ServerPlan plan=new ServerPlan(new LinkedList<>());
+//		LinkedList<ServerCommand> commands=new LinkedList<>();
+//		commands.add(new ServerCommand("RIGHT"));
+//		plan.setCommands(commands);
+//		plan.setLevelName("ISLEVLE");
+//        try {
+//			dbManager.addServerPlan(plan);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//        try {
+//			plan=dbManager.getPlanForLevelName("ISLEVLE");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        System.out.println(plan);
+        //End of test
+    	ServerPlan plan=new ServerPlan(new LinkedList<>());
+		LinkedList<ServerCommand> commands=new LinkedList<>();
+		commands.add(new ServerCommand("RIGHT"));
+		plan.setCommands(commands);
+		plan.setLevelName("AM LES");
+    	RESTclient res=RESTclient.getInstance();
+    	try {
+			res.sendPlanToDB(plan);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
 //      // Get XML
 //      Todo xmlResponse = target.request()
 //              .accept(MediaType.TEXT_XML).get(Todo.class);

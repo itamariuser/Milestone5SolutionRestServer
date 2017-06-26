@@ -1,33 +1,21 @@
 package commons;
 
-
+import java.io.Serializable;
 import java.util.LinkedList;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-@Entity(name="ServerPlans")
-public class ServerPlan {
-	@OneToMany
-	@JoinColumn(name="ServerCommandID", nullable=false)
+@SuppressWarnings("serial")
+public class ServerPlan implements Serializable {
 	private LinkedList<ServerCommand> commands;
-	
-	public ServerPlan() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	@Column(name="LevelName")
 	private String levelName;
+	public ServerPlan() {
+		commands = new LinkedList<>();
+	}
+
 	
-	
-	@Column(name="ServerCommandID")
-	private Integer serverCommandID;
-	
+
 	public ServerPlan(LinkedList<ServerCommand> commands) {
 		super();
 		this.commands = commands;
@@ -40,7 +28,14 @@ public class ServerPlan {
 	public void setCommands(LinkedList<ServerCommand> commands) {
 		this.commands = commands;
 	}
+	
+	public String getLevelName() {
+		return levelName;
+	}
 
+	public void setLevelName(String levelName) {
+		this.levelName = levelName;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		boolean eq = true;
@@ -53,22 +48,6 @@ public class ServerPlan {
 		return eq;
 	}
 
-	public String getLevelName() {
-		return levelName;
-	}
-
-	public void setLevelName(String levelName) {
-		this.levelName = levelName;
-	}
-
-	public Integer getServerCommandID() {
-		return serverCommandID;
-	}
-
-	public void setServerCommandID(Integer serverCommandID) {
-		this.serverCommandID = serverCommandID;
-	}
-	
 	
 
 }

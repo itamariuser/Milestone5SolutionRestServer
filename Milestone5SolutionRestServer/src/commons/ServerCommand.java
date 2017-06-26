@@ -1,25 +1,35 @@
 package commons;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+
 @XmlRootElement
-@Entity(name="ServerCommands")
-public class ServerCommand {
-	@Id
-	@Column(name="ServerCommandID")
-	private Integer ServerCommandID;
+@SuppressWarnings("serial")
+public class ServerCommand implements Serializable {	
+	private String description;
+	public ServerCommand() {
+		this.description="DEFAULT COMMAND";
+	}
 	
-	@Column(name="Description",nullable=true)
-	String description;
-	
+	public ServerCommand(String description) {
+		super();
+		this.description = description;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof ServerCommand)
-		{
-			return false;
-		}
-		return ((ServerCommand)obj).ServerCommandID.equals(this.ServerCommandID);
+		return this.description.equals(((ServerCommand)obj).description);
 	}
+	
 }
