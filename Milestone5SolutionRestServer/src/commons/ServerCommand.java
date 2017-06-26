@@ -3,7 +3,8 @@ package commons;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 @Entity(name="ServerCommands")
 public class ServerCommand {
 	@Id

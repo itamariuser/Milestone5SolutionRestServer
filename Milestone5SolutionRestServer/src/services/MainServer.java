@@ -6,6 +6,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("/")
 public class MainServer extends ResourceConfig {
 	public MainServer() {
-		super(TodoResource.class);
+		super(SolutionService.class);
 	}
 }

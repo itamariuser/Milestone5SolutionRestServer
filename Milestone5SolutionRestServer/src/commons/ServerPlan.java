@@ -16,6 +16,11 @@ public class ServerPlan {
 	@JoinColumn(name="ServerCommandID", nullable=false)
 	private LinkedList<ServerCommand> commands;
 	
+	public ServerPlan() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	@Column(name="LevelName")
 	private String levelName;
 	

@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import testPckg.Employee;
 import testPckg.Todo;
 
-@Path("todo")
+@Path("s")
 public class TodoResource {
     @GET
     @Produces({MediaType.TEXT_XML})

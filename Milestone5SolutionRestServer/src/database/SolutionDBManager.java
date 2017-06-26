@@ -33,10 +33,7 @@ public class SolutionDBManager {
 		return instance;
 	}
 	
-	private SolutionDBManager() {
-	}
-	
-	public List<ServerPlan> getPlanForLevelName(String levelName)
+	public List<ServerPlan> getPlanForLevelName(String levelName) throws Exception
 	{
 		Session session = null;
 		ArrayList<ServerPlan> plans=new ArrayList<ServerPlan>();
@@ -47,7 +44,7 @@ public class SolutionDBManager {
 			plans.addAll(query.list());
 		}
 		catch (HibernateException ex) {
-			System.out.println(ex.getMessage());
+			throw new Exception("Couldn't get plans from DB");
 		}
 		finally {
 			if (session != null)
@@ -56,7 +53,7 @@ public class SolutionDBManager {
 		return plans;
 	}
 	
-	public void addServerPlan(ServerPlan plan)  {
+	public void addServerPlan(ServerPlan plan) throws Exception  {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -68,7 +65,7 @@ public class SolutionDBManager {
 		catch (HibernateException ex) {
 			if (tx != null)
 				tx.rollback();
-			System.out.println(ex.getMessage());
+			throw new Exception("Couldn't add plan to DB");
 		}
 		finally {
 			if (session != null)
