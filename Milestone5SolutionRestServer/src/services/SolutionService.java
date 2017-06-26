@@ -57,11 +57,11 @@ public class SolutionService {
 		{
 			return Response.status(400).build();//Bad Request
 		}
-		try {
-			dbManager.addServerPlan(plan);
-		} catch (Exception e) {
-			return Response.status(409).build();//Conflict: Couldn't add to DB
-		}
+//		try {
+//			dbManager.addServerPlan(plan);
+//		} catch (Exception e) {
+//			return Response.status(409).build();//Conflict: Couldn't add to DB
+//		}
 		return Response.status(200).build();
 	}
 	
