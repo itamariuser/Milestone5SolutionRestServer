@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 
-import serverCommons.ServerCommand;
-import serverCommons.ServerPlan;
+import commons.ServerCommand;
+import commons.ServerPlan;
 
 public class SolutionDBManager {
 

@@ -8,9 +8,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import commons.Level2D;
+import commons.ServerPlan;
 import database.SolutionDBManager;
-import serverCommons.Level2D;
-import serverCommons.ServerPlan;
 
 @Path("planDB")
 public class SolutionService {

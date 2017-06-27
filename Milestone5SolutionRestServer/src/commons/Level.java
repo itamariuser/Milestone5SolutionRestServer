@@ -1,4 +1,4 @@
-package serverCommons;
+package commons;
 
 import java.io.Serializable;
 import java.util.ArrayList;

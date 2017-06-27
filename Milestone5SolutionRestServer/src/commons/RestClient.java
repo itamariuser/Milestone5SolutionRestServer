@@ -1,4 +1,4 @@
-package serverCommons;
+package commons;
 
 import java.net.URI;
 
@@ -19,7 +19,18 @@ public class RestClient {
 	
 	private ClientConfig config;
 	private Client client;
+	private URI serverURI;
 	
+	
+	
+	public URI getServerURI() {
+		return serverURI;
+	}
+
+	public void setServerURI(String newURI) {
+		this.serverURI=UriBuilder.fromUri(newURI).build();
+	}
+
 	public static RestClient getInstance()
 	{
 		if(instance==null)
@@ -30,18 +41,15 @@ public class RestClient {
 	}
 	
 	private RestClient() {
+		setServerURI("http://localhost:8080/Milestone5SolutionRestServer/");
 		config = new ClientConfig();
 		client = ClientBuilder.newClient(config);
-	}
-
-	private static URI getBaseURI() {
-		return UriBuilder.fromUri("http://localhost:8080/Milestone5SolutionRestServer/").build();
 	}
 
 	public ServerPlan getPlanForLevelName(String levelName) throws Exception{
 		
 		
-		WebTarget target = client.target(getBaseURI()).path("planDB").path("getPlanForLevel");
+		WebTarget target = client.target(serverURI).path("planDB").path("getPlanForLevel");
 
 		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_XML);
 		Response response = invocationBuilder.put(Entity.entity(levelName, MediaType.APPLICATION_XML));
@@ -59,7 +67,7 @@ public class RestClient {
 		ClientConfig config = new ClientConfig();
 		Client client = ClientBuilder.newClient(config);
 		
-		WebTarget target = client.target(getBaseURI()).path("planDB").path("putNewPlan");
+		WebTarget target = client.target(serverURI).path("planDB").path("putNewPlan");
 
 		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_XML);
 		Response response = invocationBuilder.put(Entity.entity(serverPlan, MediaType.APPLICATION_XML));

@@ -5,10 +5,10 @@ import java.util.LinkedList;
 
 import javax.ws.rs.core.UriBuilder;
 
-import serverCommons.Level2D;
-import serverCommons.RestClient;
-import serverCommons.ServerCommand;
-import serverCommons.ServerPlan;
+import commons.Level2D;
+import commons.RestClient;
+import commons.ServerCommand;
+import commons.ServerPlan;
 
 public class MainClient {
     public static void main(String[] args) {
@@ -80,11 +80,12 @@ public class MainClient {
 		plan.setCommands(commands);
 		plan.setLevelName("MANY LMAOS");
     	RestClient res=RestClient.getInstance();
-//    	try {
-//			System.out.println(res.sendPlanToDB(plan));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+    	res.setServerURI("http://localhost:8080/Milestone5SolutionRestServer/");
+    	try {
+			System.out.println(res.sendPlanToDB(plan));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     	try {
     		Level2D level=new Level2D();
     		level.setName("MANY LMAOS");
