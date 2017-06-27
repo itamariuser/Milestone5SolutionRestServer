@@ -1,4 +1,4 @@
-package client;
+package serverCommons;
 
 import java.net.URI;
 
@@ -12,9 +12,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
-
-import commons.Level2D;
-import commons.ServerPlan;
 
 public class RESTclient {
 
@@ -41,13 +38,13 @@ public class RESTclient {
 		return UriBuilder.fromUri("http://localhost:8080/Milestone5SolutionRestServer/").build();
 	}
 
-	public ServerPlan getSolutionForLevel(Level2D level) throws Exception {
+	public ServerPlan getPlanForLevelName(String levelName) throws Exception{
 		
 		
 		WebTarget target = client.target(getBaseURI()).path("planDB").path("getPlanForLevel");
 
 		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_XML);
-		Response response = invocationBuilder.put(Entity.entity(level, MediaType.APPLICATION_XML));
+		Response response = invocationBuilder.put(Entity.entity(levelName, MediaType.APPLICATION_XML));
 		if (response.getStatus() == 200) {
 			return response.readEntity(ServerPlan.class);
 		} else if (response.getStatus() == 204) {

@@ -9,9 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 
-import commons.ServerCommand;
-import commons.ServerPlan;
+import serverCommons.ServerCommand;
+import serverCommons.ServerPlan;
 
 public class SolutionDBManager {
 
@@ -28,7 +29,8 @@ public class SolutionDBManager {
 
 	private SolutionDBManager() {
 		databaseFiles = new File("database");
-		System.out.println(databaseFiles.getPath());
+		databaseFiles.mkdir();
+		System.out.println();
 	}
 
 	public ServerPlan getPlanForLevelName(String levelName)  {
@@ -54,7 +56,7 @@ public class SolutionDBManager {
 
 	public void addServerPlan(ServerPlan plan) {
 
-		if (!(getPlanForLevelName(plan.getLevelName()) == null)) {
+		if ((getPlanForLevelName(plan.getLevelName()) != null)) {
 			// clear file
 			PrintWriter out=null;
 			try {
@@ -69,7 +71,7 @@ public class SolutionDBManager {
 		// write commands in file
 		XMLEncoder xmlEncoder=null;
 		try {
-			File f=new File(databaseFiles.getPath() + "/" + plan.getLevelName());
+			File f = new File(databaseFiles.getPath(),plan.getLevelName());
 			//TODO: if no file found, then create new file
 			xmlEncoder = new XMLEncoder(new FileOutputStream(f));
 		} catch (FileNotFoundException e) {

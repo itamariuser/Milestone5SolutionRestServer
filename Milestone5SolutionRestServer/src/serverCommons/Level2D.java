@@ -1,4 +1,4 @@
-package commons;
+package serverCommons;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import commons.Level;
 import model.data.GameObject;
 import model.data.MainCharacter;
 import model.data.Position;

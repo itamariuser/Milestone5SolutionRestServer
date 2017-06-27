@@ -1,4 +1,4 @@
-package commons;
+package serverCommons;
 
 import java.io.Serializable;
 

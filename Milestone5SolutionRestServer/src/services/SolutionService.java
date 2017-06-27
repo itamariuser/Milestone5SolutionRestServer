@@ -8,9 +8,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import commons.Level2D;
-import commons.ServerPlan;
 import database.SolutionDBManager;
+import serverCommons.Level2D;
+import serverCommons.ServerPlan;
 
 @Path("planDB")
 public class SolutionService {
@@ -24,21 +24,15 @@ public class SolutionService {
 	@Path("getPlanForLevel")
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.APPLICATION_XML)
-	public Response getPlanForLevel(Level2D level) {
-		if(level.getName().equals(null))
+	public Response getPlanForLevel(String levelName) {
+		if(levelName.equals(null))
 		{
 			return Response.status(400).build();//Bad Request
 		}
 		ServerPlan plan;
-//		try {
-			plan = dbManager.getPlanForLevelName(level.getName());
-			if(plan.equals(null))
-			{
-				return Response.status(204).build();//No content
-			}
-//		} catch (Exception e) {
-//			return Response.status(409).build();//Conflict: Couldn't get plans from DB
-//		}
+		plan = dbManager.getPlanForLevelName(levelName);
+		System.out.println();
+
 		
 		return Response.status(200).entity(plan).build();//Successful, returning server plan
 

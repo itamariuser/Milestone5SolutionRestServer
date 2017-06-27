@@ -3,20 +3,12 @@ package client;
 import java.net.URI;
 import java.util.LinkedList;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
-import org.glassfish.jersey.client.ClientConfig;
-
-import commons.ServerCommand;
-import commons.ServerPlan;
-import database.SolutionDBManager;
+import serverCommons.Level2D;
+import serverCommons.RESTclient;
+import serverCommons.ServerCommand;
+import serverCommons.ServerPlan;
 
 public class MainClient {
     public static void main(String[] args) {
@@ -66,7 +58,7 @@ public class MainClient {
 //		LinkedList<ServerCommand> commands=new LinkedList<>();
 //		commands.add(new ServerCommand("RIGHT"));
 //		plan.setCommands(commands);
-//		plan.setLevelName("ISLEVLE");
+//		plan.setLevelName("ALALAL");
 //        try {
 //			dbManager.addServerPlan(plan);
 //		} catch (Exception e) {
@@ -80,18 +72,28 @@ public class MainClient {
 //		}
 //        System.out.println(plan);
         //End of test
+    	
+    	//Test for RESTclient
     	ServerPlan plan=new ServerPlan(new LinkedList<>());
 		LinkedList<ServerCommand> commands=new LinkedList<>();
-		commands.add(new ServerCommand("RIGHT"));
+		commands.add(new ServerCommand("NASKH"));
 		plan.setCommands(commands);
-		plan.setLevelName("AM LES");
+		plan.setLevelName("MANY LMAOS");
     	RESTclient res=RESTclient.getInstance();
+//    	try {
+//			System.out.println(res.sendPlanToDB(plan));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
     	try {
-			res.sendPlanToDB(plan);
+    		Level2D level=new Level2D();
+    		level.setName("MANY LMAOS");
+			plan=res.getPlanForLevelName(level.getName());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	System.out.println(plan.getCommands().get(0).getDescription());
+    	//End of test
     	
 //      // Get XML
 //      Todo xmlResponse = target.request()
