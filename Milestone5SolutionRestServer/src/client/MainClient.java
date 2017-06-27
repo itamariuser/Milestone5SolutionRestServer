@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import javax.ws.rs.core.UriBuilder;
 
 import serverCommons.Level2D;
-import serverCommons.RESTclient;
+import serverCommons.RestClient;
 import serverCommons.ServerCommand;
 import serverCommons.ServerPlan;
 
@@ -79,7 +79,7 @@ public class MainClient {
 		commands.add(new ServerCommand("NASKH"));
 		plan.setCommands(commands);
 		plan.setLevelName("MANY LMAOS");
-    	RESTclient res=RESTclient.getInstance();
+    	RestClient res=RestClient.getInstance();
 //    	try {
 //			System.out.println(res.sendPlanToDB(plan));
 //		} catch (Exception e) {

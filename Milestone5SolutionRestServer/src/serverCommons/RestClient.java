@@ -13,23 +13,23 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
 
-public class RESTclient {
+public class RestClient {
 
-	private static RESTclient instance;
+	private static RestClient instance;
 	
 	private ClientConfig config;
 	private Client client;
 	
-	public static RESTclient getInstance()
+	public static RestClient getInstance()
 	{
 		if(instance==null)
 		{
-			instance=new RESTclient();
+			instance=new RestClient();
 		}
 		return instance;
 	}
 	
-	private RESTclient() {
+	private RestClient() {
 		config = new ClientConfig();
 		client = ClientBuilder.newClient(config);
 	}
