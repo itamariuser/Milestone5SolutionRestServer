@@ -7,9 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
 
 import commons.ServerCommand;
 import commons.ServerPlan;
@@ -30,7 +28,6 @@ public class SolutionDBManager {
 	private SolutionDBManager() {
 		databaseFiles = new File("database");
 		databaseFiles.mkdir();
-		System.out.println();
 	}
 
 	public ServerPlan getPlanForLevelName(String levelName)  {
@@ -42,7 +39,6 @@ public class SolutionDBManager {
 					try {
 						xmlDecoder = new XMLDecoder(new FileInputStream(file));
 					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					ServerPlan plan = (ServerPlan) xmlDecoder.readObject();
@@ -62,7 +58,6 @@ public class SolutionDBManager {
 			try {
 				out = new PrintWriter(databaseFiles.getPath() + "/" + plan.getLevelName());
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			out.write("");
@@ -72,15 +67,10 @@ public class SolutionDBManager {
 		XMLEncoder xmlEncoder=null;
 		try {
 			File f = new File(databaseFiles.getPath(),plan.getLevelName());
-			//TODO: if no file found, then create new file
 			xmlEncoder = new XMLEncoder(new FileOutputStream(f));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		for (ServerCommand command : plan.getCommands()) {
 			xmlEncoder.writeObject(command);
 		}
@@ -91,7 +81,6 @@ public class SolutionDBManager {
 			encoder = new XMLEncoder(
 					new BufferedOutputStream(new FileOutputStream(databaseFiles.getPath() + "/" + plan.getLevelName())));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		encoder.writeObject(plan);

@@ -75,7 +75,6 @@ public class RestClient {
 			return true;
 		} else
 			return false;
-
 	}
 
 }

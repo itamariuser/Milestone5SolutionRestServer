@@ -16,12 +16,6 @@ public class MainClient {
 		plan.setCommands(commands);
 		plan.setLevelName("level 6");
     	RestClient res=RestClient.getInstance();
-//    	res.setServerURI("http://localhost:8080/Milestone5SolutionRestServer/");
-//    	try {
-//			System.out.println(res.sendPlanToDB(plan));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
     	try {
     		Level2D level=new Level2D();
     		level.setName("level 3");
