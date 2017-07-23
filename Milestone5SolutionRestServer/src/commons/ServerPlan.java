@@ -5,6 +5,12 @@ import java.util.LinkedList;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * A class containing a list of commands for a solution of a level, to be exchanged 
+ * between the user and the server.
+ *
+ *
+ */
 @XmlRootElement
 @SuppressWarnings("serial")
 public class ServerPlan implements Serializable {

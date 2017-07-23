@@ -7,6 +7,12 @@ import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+
+/**
+ * 
+ * A class containing a single command, to be exchanged between the user and the server.
+ *
+ */
 @XmlRootElement
 @SuppressWarnings("serial")
 public class ServerCommand implements Serializable {	

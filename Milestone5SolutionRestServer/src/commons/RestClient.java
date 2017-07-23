@@ -22,7 +22,11 @@ public class RestClient {
 	private URI serverURI;
 	
 	
-	
+	/**
+	 * 
+	 * The URI of the REST server
+	 * @return URI rest server's URI
+	 */
 	public URI getServerURI() {
 		return serverURI;
 	}
@@ -46,6 +50,14 @@ public class RestClient {
 		client = ClientBuilder.newClient(config);
 	}
 
+	/**
+	 * Checks in DB if there's a plan for a level with the given name (level names are unique).
+	 * returns a plan for solving the level.
+	 *
+	 * @param levelName
+	 * @return plan for the level, or an empty plan if not found in DB
+	 * @throws Exception
+	 */
 	public ServerPlan getPlanForLevelName(String levelName) throws Exception{
 		
 		
@@ -63,6 +75,13 @@ public class RestClient {
 			return null;
 	}
 
+	
+	/**
+	 * Insert a plan in the DB for a specific level.
+	 * @param serverPlan
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean sendPlanToDB(ServerPlan serverPlan) throws Exception {
 		ClientConfig config = new ClientConfig();
 		Client client = ClientBuilder.newClient(config);

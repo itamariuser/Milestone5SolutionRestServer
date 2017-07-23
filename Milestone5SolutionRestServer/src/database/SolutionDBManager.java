@@ -30,6 +30,11 @@ public class SolutionDBManager {
 		databaseFiles.mkdir();
 	}
 
+	/**
+	 * 
+	 * @param levelName
+	 * @return a plan for the level, or an empty plan if not found in DB
+	 */
 	public ServerPlan getPlanForLevelName(String levelName)  {
 		File[] files = databaseFiles.listFiles();
 		if (files != null) {
@@ -50,6 +55,10 @@ public class SolutionDBManager {
 		return null;
 	}
 
+	/**
+	 * Insert a plan into the DB.
+	 * @param plan
+	 */
 	public void addServerPlan(ServerPlan plan) {
 
 		if ((getPlanForLevelName(plan.getLevelName()) != null)) {

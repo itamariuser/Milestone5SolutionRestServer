@@ -10,6 +10,10 @@ import javax.ws.rs.core.Response;
 import commons.ServerPlan;
 import database.SolutionDBManager;
 
+/**
+ * A class for the REST service through HTTP.
+ *
+ */
 @Path("planDB")
 public class SolutionService {
 	
@@ -18,6 +22,11 @@ public class SolutionService {
 		dbManager=SolutionDBManager.getInstance();
 	}
 	
+	/**
+	 * 
+	 * @param levelName
+	 * @return An HTTP response, containing a plan for the level, or an empty plan if plan not found.
+	 */
 	@PUT
 	@Path("getPlanForLevel")
 	@Consumes(MediaType.APPLICATION_XML)
@@ -34,6 +43,14 @@ public class SolutionService {
 
 	}
 
+	/**
+	 * Insert a plan into the DB.
+	 * @param plan
+	 * @return An HTTP response with status of:
+	 * 200 - if the insertion was successful.
+	 * 400 - if the plan doesn't contain a level name.
+	 * 409 - if the insertion failed.
+	 */
 	@PUT
 	@Path("putNewPlan")
 	@Consumes(MediaType.APPLICATION_XML)

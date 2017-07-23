@@ -8,6 +8,11 @@ import commons.ServerCommand;
 import commons.ServerPlan;
 
 public class MainClient {
+	
+	/**
+	 * An example on using the client for REST server
+	 * @param args
+	 */
     public static void main(String[] args) {
   
     	ServerPlan plan=new ServerPlan(new LinkedList<>());
