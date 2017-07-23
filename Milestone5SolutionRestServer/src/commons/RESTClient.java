@@ -1,4 +1,5 @@
-package common;
+package commons;
+
 
 import java.net.URI;
 
@@ -13,9 +14,9 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
 
-public class RestClient {
+public class RESTClient {
 
-	private static RestClient instance;
+	private static RESTClient instance;
 	
 	private ClientConfig config;
 	private Client client;
@@ -35,19 +36,25 @@ public class RestClient {
 		this.serverURI=UriBuilder.fromUri(newURI).build();
 	}
 
-	public static RestClient getInstance()
+	public static RESTClient getInstance()
 	{
 		if(instance==null)
 		{
-			instance=new RestClient();
+			instance=new RESTClient();
 		}
 		return instance;
 	}
 	
-	private RestClient() {
+	private RESTClient() {
 		setServerURI("http://localhost:8080/Milestone5SolutionRestServer/");
 		config = new ClientConfig();
 		client = ClientBuilder.newClient(config);
+	}
+	
+
+	public RESTClient(URI serverURI) {
+		super();
+		this.serverURI = serverURI;
 	}
 
 	/**

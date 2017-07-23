@@ -3,7 +3,7 @@ package client;
 import java.util.LinkedList;
 
 import common.Level2D;
-import commons.RestClient;
+import commons.RESTClient;
 import commons.ServerCommand;
 import commons.ServerPlan;
 
@@ -14,24 +14,30 @@ public class MainClient {
 	 * @param args
 	 */
     public static void main(String[] args) {
-  
-    	ServerPlan plan=new ServerPlan(new LinkedList<>());
+    	RESTClient res=RESTClient.getInstance();
+    	//Send a plan
+    	ServerPlan planSent=new ServerPlan();
 		LinkedList<ServerCommand> commands=new LinkedList<>();
-		commands.add(new ServerCommand("Move right"));
-		plan.setCommands(commands);
-		plan.setLevelName("level 4");
-    	RestClient res=RestClient.getInstance();
+		commands.add(new ServerCommand("Move left"));
+		planSent.setCommands(commands);
+		planSent.setLevelName("level 4");
+    	try {
+			res.sendPlanToDB(planSent);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+    	
+    	//Receive a plan and print its commands to the screen
+    	ServerPlan planReceived=new ServerPlan();
     	try {
     		Level2D level=new Level2D();
     		level.setName("level 3");
-			plan=res.getPlanForLevelName(level.getName());
+    		planReceived=res.getPlanForLevelName(level.getName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    	for (ServerCommand serverCommand : plan.getCommands()) {
+    	for (ServerCommand serverCommand : planReceived.getCommands()) {
     		System.out.println(serverCommand.getDescription());
 		}
-    	
-
     }
 }
