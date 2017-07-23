@@ -11,7 +11,7 @@ public class MainClient {
 	
 	/**
 	 * An example on using the client for REST server
-	 * @param args
+	 * 
 	 */
     public static void main(String[] args) {
     	RESTClient res=RESTClient.getInstance();

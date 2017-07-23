@@ -32,8 +32,8 @@ public class SolutionDBManager {
 
 	/**
 	 * 
-	 * @param levelName
-	 * @return a plan for the level, or an empty plan if not found in DB
+	 * @param levelName - The level to search a plan for.
+	 * @return A plan for the level, or an empty plan if not found in DB
 	 */
 	public ServerPlan getPlanForLevelName(String levelName)  {
 		File[] files = databaseFiles.listFiles();
@@ -57,7 +57,7 @@ public class SolutionDBManager {
 
 	/**
 	 * Insert a plan into the DB.
-	 * @param plan
+	 * @param plan - The plan to insert
 	 */
 	public void addServerPlan(ServerPlan plan) {
 

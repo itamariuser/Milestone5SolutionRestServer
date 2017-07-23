@@ -61,13 +61,11 @@ public class RESTClient {
 	 * Checks in DB if there's a plan for a level with the given name (level names are unique).
 	 * returns a plan for solving the level.
 	 *
-	 * @param levelName
-	 * @return plan for the level, or an empty plan if not found in DB
-	 * @throws Exception
+	 * @param levelName - The name of the level.
+	 * @return plan for the level, or an empty plan if not found in DB.
+	 * @throws Exception - In case any of the level data is missing.
 	 */
 	public ServerPlan getPlanForLevelName(String levelName) throws Exception{
-		
-		
 		WebTarget target = client.target(serverURI).path("planDB").path("getPlanForLevel");
 
 		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_XML);
@@ -85,11 +83,10 @@ public class RESTClient {
 	
 	/**
 	 * Insert a plan in the DB for a specific level.
-	 * @param serverPlan
-	 * @return
-	 * @throws Exception
+	 * @param serverPlan - The plan to send.
+	 * @return - true if successful, false otherwise.
 	 */
-	public boolean sendPlanToDB(ServerPlan serverPlan) throws Exception {
+	public boolean sendPlanToDB(ServerPlan serverPlan) {
 		ClientConfig config = new ClientConfig();
 		Client client = ClientBuilder.newClient(config);
 		
