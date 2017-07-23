@@ -23,7 +23,6 @@ public class SolutionService {
 	}
 	
 	/**
-	 * 
 	 * @param levelName
 	 * @return An HTTP response with status 200, containing a plan for the level or an empty plan if none was found, or an HTTP response with status 400 if level name is null.
 	 */
@@ -47,9 +46,9 @@ public class SolutionService {
 	 * Insert a plan into the DB.
 	 * @param plan
 	 * @return An HTTP response with status of:
-	 * 200 - if the insertion was successful.
-	 * 400 - if the plan doesn't contain a level name.
-	 * 409 - if the insertion failed.
+	 * <br>200 - if the insertion was successful.
+	 * <br>400 - if the plan doesn't contain a level name.
+	 * <br>409 - if the insertion failed.
 	 */
 	@PUT
 	@Path("putNewPlan")
