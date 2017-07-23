@@ -2,7 +2,7 @@ package client;
 
 import java.util.LinkedList;
 
-import commons.Level2D;
+import common.Level2D;
 import commons.RestClient;
 import commons.ServerCommand;
 import commons.ServerPlan;
@@ -19,7 +19,7 @@ public class MainClient {
 		LinkedList<ServerCommand> commands=new LinkedList<>();
 		commands.add(new ServerCommand("Move right"));
 		plan.setCommands(commands);
-		plan.setLevelName("level 6");
+		plan.setLevelName("level 4");
     	RestClient res=RestClient.getInstance();
     	try {
     		Level2D level=new Level2D();

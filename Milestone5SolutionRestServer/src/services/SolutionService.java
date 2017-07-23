@@ -25,7 +25,7 @@ public class SolutionService {
 	/**
 	 * 
 	 * @param levelName
-	 * @return An HTTP response, containing a plan for the level, or an empty plan if plan not found.
+	 * @return An HTTP response with status 200, containing a plan for the level or an empty plan if none was found, or an HTTP response with status 400 if level name is null.
 	 */
 	@PUT
 	@Path("getPlanForLevel")
