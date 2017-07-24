@@ -13,5 +13,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class MainServer extends ResourceConfig {
 	public MainServer() {
 		super(SolutionService.class);
+		System.out.println("Server is running at 'http://localhost:8080/Milestone5SolutionRestServer/'");
 	}
 }

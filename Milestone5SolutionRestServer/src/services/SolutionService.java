@@ -7,6 +7,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.sun.org.apache.xml.internal.utils.URI;
+import com.sun.org.apache.xml.internal.utils.URI.MalformedURIException;
+
 import commons.ServerPlan;
 import database.SolutionDBManager;
 
@@ -20,6 +23,7 @@ public class SolutionService {
 	private SolutionDBManager dbManager;
 	public SolutionService() {
 		dbManager=SolutionDBManager.getInstance();
+
 	}
 	
 	/**
